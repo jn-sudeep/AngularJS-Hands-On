@@ -1,0 +1,21 @@
+﻿@{ 
+
+    ViewBag.Title = "AngularJS Hands On";
+    Layout = null;
+}
+
+<html ng-app="handsOnApp">
+<head>
+
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/bundles/AngularJS-Hands-On/style")
+    @Scripts.Render("~/bundles/AngularJS-Hands-On/script")
+
+</head>
+<body class="container">
+    <br />
+    <div ng-view>
+    </div>
+</body>
+</html>
