@@ -1,34 +1,21 @@
 ﻿handsOnApp.controller('gridController',
     ["$scope", "$window", "gridService",
-    function gridController($scope, $window, bookService) {
+    function gridController($scope, $window, gridService) {
 
-        $scope.book = {};                   // Creates a blank Book object used in Add Book operation
+        // Load all Employees
 
-        // Load all books for Modify and Delete operations
+        $scope.getEmployees = function () {
 
-        $scope.getBooks = function () {
-            $scope.isProcessing = true;
-
-            bookService.getBooks().then(
+            gridService.getEmployees().then(
                 function (successResult) {
 
-                    $scope.books = successResult.data;
-
-                    if ($scope.books.length > 0) {
-                        $scope.selectedBook = $scope.books[0];
-                    }
-
-                    $scope.isProcessing = false;
+                    $scope.employees = successResult.data;
                 },
                 function (failureResult) {
 
-                    $scope.hasServerValidationErrors = true;
-                    $scope.formErrors = failureResult.data;
-
-                    $scope.isProcessing = false;
+                    console.log(failureResult);
                 });
         };
-
     }]);
     
     

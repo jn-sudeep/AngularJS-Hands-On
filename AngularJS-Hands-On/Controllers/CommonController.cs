@@ -5,35 +5,26 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
+using AngularJS.HandsOn.Models;
 
 namespace AngularJS.HandsOn.Controllers
 {
     public class CommonController : ApiController
     {
-        //public HttpResponseMessage GetBooks()
-        //{
-        //    HttpResponseMessage response = new HttpResponseMessage();
+        public HttpResponseMessage GetEmployees()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
 
-        //    try
-        //    {
-        //        LibraryRepository libraryRepository = new LibraryRepository(Constants.ConnectionString);
-        //        response.StatusCode = HttpStatusCode.OK;
-        //        response.Content = new ObjectContent(typeof(List<Book>), libraryRepository.GetBooks(), GlobalConfiguration.Configuration.Formatters.JsonFormatter);
-        //        return response;                        
-        //    }
-        //    catch (DataDuplicityException ex)
-        //    {
-        //        response.StatusCode = HttpStatusCode.InternalServerError;
-        //        response.Content = new StringContent(ex.ErrorMessage);
-        //        return response;
-        //    }
-        //    catch (DataLayerException ex)
-        //    {
-        //        response.StatusCode = HttpStatusCode.InternalServerError;
-        //        response.Content = new StringContent(ex.ErrorMessage);
-        //        return response;
-        //    }
-        //}
+            List<Employee> employees = new List<Employee>();
 
+            employees.Add(new Employee() {Name = "A", Age = 40});
+            employees.Add(new Employee() { Name = "B", Age = 22 });
+            employees.Add(new Employee() { Name = "C", Age = 34 });
+            employees.Add(new Employee() { Name = "D", Age = 50 });
+
+            response.StatusCode = HttpStatusCode.OK;
+            response.Content = new ObjectContent(typeof(List<Employee>), employees, GlobalConfiguration.Configuration.Formatters.JsonFormatter);
+            return response;
+        }
     }
 }

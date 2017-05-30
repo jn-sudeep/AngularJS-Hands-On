@@ -2,14 +2,14 @@
     ["$http",
         function ($http) {
 
-            // Loads all books
+            // Loads all Employees
 
-            var getBooks = function () {
+            var getEmployees = function () {
 
-                return $http.get("api/Common/GetBooks");
+                return $http.get("api/Common/GetEmployees");
             };
 
             return {
-                getBooks: getBooks
+                getEmployees: getEmployees
             };
         }]);
